@@ -4,6 +4,8 @@
  *
  */
 public class FacadeController {
+	
+	private GeneralController gc;
 
 	/** 1: Inicializar Sistema **/
 	/**
@@ -15,7 +17,7 @@ public class FacadeController {
 	 *            porcentagem a ser retirada de cada aposta perdedora
 	 */
 	public void inicializa(int caixa, double taxa) {
-
+		gc = new GeneralController(caixa, taxa);
 	}
 
 	/**
@@ -24,7 +26,7 @@ public class FacadeController {
 	 * @return valor em caixa
 	 */
 	public int getCaixa() {
-		return 0;
+		return gc.getCaixa();
 	}
 
 	/** 2: Cadastrar e Listar Cenários **/
@@ -123,7 +125,7 @@ public class FacadeController {
 	 *            ocorreu.
 	 * 
 	 */
-	public void fecharAposta(int cenario, boolean ocorreu) {
+	public void fecharApostas(int cenario, boolean ocorreu) {
 
 	}
 
