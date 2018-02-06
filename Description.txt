@@ -1,0 +1,31 @@
+# Cadastrar Cenário Bonus:
+
+	Novo tipo de cenário que ofereça bônus. O bônus é um valor imediatamente retirado do caixa do sistema e colocado no cenário quando o mesmo é criado. Esse valor será distribuido entre os vencedores (passa a ser parte do getTotalRateioCenario).
+	Representação de cenários com bônus: "NUMERACAO - DESCRICAO - ESTADO - BONUS".
+	O facade deve ter métodos para:
+		- Cadastrar cenários com bônus
+			- int cadastrarCenario(String descricao, int bonus)
+
+
+# Cadastrar Aposta Assegurada
+
+	- Aposta sem seguro
+	- Aposta assegurada por valor
+	- Aposta assegurada por taxa
+
+Métodos facade:
+	- Cadastrar apostas asseguradas:
+		- int cadastrarApostaSeguraValor(int cenario,
+										 String apostador,
+										 int valor,
+										 String previsao,
+										 int valor,
+										 int custo)
+		- int cadastrarApostaSeguraTaxa (int cenario,
+										 String apostador,
+										 int valor,
+										 String previsao,
+										 double taxa,
+										 int custo)
+		- int alterarSeguroValor(int cenario, int apostaAssegurada, int valor)
+		- int alterarSeguroTaxa (int cenario, int apostaAssegurada, double taxa)

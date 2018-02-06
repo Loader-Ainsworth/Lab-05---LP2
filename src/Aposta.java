@@ -5,6 +5,12 @@ public class Aposta {
 	private int valor;
 	private boolean previsao;
 	
+	/**
+	 * Constrói uma nova aposta
+	 * @param apostador nome do apostador
+	 * @param valor valor da aposta
+	 * @param previsao previsão da aposta
+	 */
 	public Aposta(String apostador, int valor, String previsao) {
 		
 		this.apostador = apostador;

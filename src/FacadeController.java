@@ -1,3 +1,7 @@
+import javax.crypto.IllegalBlockSizeException;
+
+import easyaccept.EasyAccept;
+
 /**
  * 
  * @author Thúlio Carvalho
@@ -5,7 +9,21 @@
  */
 public class FacadeController {
 	
-	private GeneralController gc;
+	private GeneralController gc = new GeneralController();
+	
+	/**
+	 * Testes do EasyAccept
+	 * @param args 
+	 */
+	public static void main(String[] args) {
+		
+		String[] ar1 = new String[] {"FacadeController", "acceptance_test/us1_test.txt"};
+		String[] ar2 = new String[] {"FacadeController", "acceptance_test/us2_test.txt"};
+		String[] ar3 = new String[] {"FacadeController", "acceptance_test/us3_test.txt"};
+		String[] ar4 = new String[] {"FacadeController", "acceptance_test/us4_test.txt"};
+		String[] allTests = new String[] {"FacadeController", "acceptance_test/allTests.txt"};
+		EasyAccept.main(allTests);
+	}
 
 	/** 1: Inicializar Sistema **/
 	/**
@@ -17,7 +35,7 @@ public class FacadeController {
 	 *            porcentagem a ser retirada de cada aposta perdedora
 	 */
 	public void inicializa(int caixa, double taxa) {
-		gc = new GeneralController(caixa, taxa);
+		gc.inicializa(caixa, taxa);
 	}
 
 	/**
@@ -38,7 +56,7 @@ public class FacadeController {
 	 * @return numeração do cenário cadastrado
 	 */
 	public int cadastrarCenario(String descricao) {
-		return 0;
+		return gc.cadastrarCenario(descricao);
 	}
 
 	/**
@@ -49,7 +67,7 @@ public class FacadeController {
 	 * @return String da representação textual do cenário
 	 */
 	public String exibirCenario(int cenario) {
-		return "";
+		return gc.exibirCenario(cenario);
 	}
 
 	/**
@@ -59,7 +77,7 @@ public class FacadeController {
 	 * @return String da representação textual de todos os cenários
 	 */
 	public String exibirCenarios() {
-		return "";
+		return gc.exibirCenarios();
 	}
 
 	/** 3: Cadastrar e Listar Apostas **/
@@ -77,7 +95,7 @@ public class FacadeController {
 	 *            previsão da aposta: "VAI ACONTECER" ou "N VAI ACONTECER"
 	 */
 	public void cadastrarAposta(int cenario, String apostador, int valor, String previsao) {
-
+		gc.cadastrarAposta(cenario, apostador, valor, previsao);
 	}
 
 	/**
@@ -88,7 +106,7 @@ public class FacadeController {
 	 * @return valor total das apostas no cenário
 	 */
 	public int valorTotalDeApostas(int cenario) {
-		return 0;
+		return gc.valorTotalDeApostas(cenario);
 	}
 
 	/**
@@ -99,7 +117,7 @@ public class FacadeController {
 	 * @return número total de apostas no cenário
 	 */
 	public int totalDeApostas(int cenario) {
-		return 0;
+		return gc.totalDeApostas(cenario);
 	}
 
 	/**
@@ -111,7 +129,7 @@ public class FacadeController {
 	 * @return String com a representação textual das apostas
 	 */
 	public String exibeApostas(int cenario) {
-		return "";
+		return gc.exibeApostas(cenario);
 	}
 
 	/** 4: Fechar Apostas (Concretizar Cenário) **/
@@ -125,8 +143,8 @@ public class FacadeController {
 	 *            ocorreu.
 	 * 
 	 */
-	public void fecharApostas(int cenario, boolean ocorreu) {
-
+	public void fecharAposta(int cenario, boolean ocorreu) {
+		gc.fecharAposta(cenario, ocorreu);
 	}
 
 	/**
@@ -137,7 +155,7 @@ public class FacadeController {
 	 * @return valor total do cenário que irá para o caixa
 	 */
 	public int getCaixaCenario(int cenario) {
-		return 0;
+		return gc.getCaixaCenario(cenario);
 	}
 
 	/**
@@ -149,6 +167,6 @@ public class FacadeController {
 	 * @return valor total do cenário que irá para os vencedores
 	 */
 	public int getTotalRateioCenario(int cenario) {
-		return 0;
+		return gc.getTotalRateioCenario(cenario);
 	}
 }

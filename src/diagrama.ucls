@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="Cenario" project="Lab-05-LP2" file="/Lab-05-LP2/src/Cenario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="933" y="493"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="Aposta" project="Lab-05-LP2" file="/Lab-05-LP2/src/Aposta.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1186" y="446"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="FacadeController" project="Lab-05-LP2" 
+    file="/Lab-05-LP2/src/FacadeController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="293" width="225" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="GeneralController" project="Lab-05-LP2" 
+    file="/Lab-05-LP2/src/GeneralController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="314" width="225" x="524" y="217"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="5">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="6" name="listApostas"/>      
+      <multiplicity id="7" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="8">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="9" name="listCenarios"/>      
+      <multiplicity id="10" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="11">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="12" name="gc"/>      
+      <multiplicity id="13" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

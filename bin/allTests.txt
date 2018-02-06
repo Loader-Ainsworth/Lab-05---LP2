@@ -1,0 +1,113 @@
+###########################
+#     LAB04 - TESTE 1     #
+###########################
+
+inicializa caixa=100000 taxa=0.01
+
+expect 100000 getCaixa
+
+
+# Testes com exception
+
+expectError "Erro na inicializacao: Caixa nao pode ser inferior a 0" inicializa caixa=-1 taxa=0.01
+expectError "Erro na inicializacao: Taxa nao pode ser inferior a 0" inicializa caixa=0 taxa=-1
+
+
+###########################
+#     LAB04 - TESTE 2     #
+###########################
+
+cadastrarCenario descricao="O aluno Viktor Borgino vai pagar PLP"
+cadastrarCenario descricao="Hoje vai fazer -30 graus em Campina"
+cadastrarCenario descricao="Todos os alunos comparecerao a aula de LP2 nessa terca"
+
+expect "1 - O aluno Viktor Borgino vai pagar PLP - Nao finalizado" exibirCenario cenario=1
+expect "2 - Hoje vai fazer -30 graus em Campina - Nao finalizado" exibirCenario cenario=2
+expect "3 - Todos os alunos comparecerao a aula de LP2 nessa terca - Nao finalizado" exibirCenario cenario=3
+
+
+# Testes com exception
+
+expectError "Erro no cadastro de cenario: Descricao nao pode ser vazia" cadastrarCenario descricao=""
+expectError "Erro na consulta de cenario: Cenario invalido" exibirCenario cenario=-1
+expectError "Erro na consulta de cenario: Cenario nao cadastrado" exibirCenario cenario=9
+
+
+###########################
+#     LAB04 - TESTE 3     #
+###########################
+
+cadastrarAposta cenario=1 apostador="Matheus Melanio" valor=10000 previsao="N VAI ACONTECER"
+cadastrarAposta cenario=1 apostador="Viktor Borgino" valor=10000 previsao="VAI ACONTECER"
+
+cadastrarAposta cenario=2 apostador="Mandela Ursula" valor=100000 previsao="VAI ACONTECER"
+cadastrarAposta cenario=2 apostador="Davson Sadman" valor=150000 previsao="VAI ACONTECER"
+cadastrarAposta cenario=2 apostador="Taigo Leonel" valor=10000 previsao="N VAI ACONTECER"
+
+cadastrarAposta cenario=3 apostador="Viktor Borgino" valor=20000 previsao="VAI ACONTECER"
+cadastrarAposta cenario=3 apostador="Matheus Gaudencio" valor=2000000 previsao="VAI ACONTECER"
+cadastrarAposta cenario=3 apostador="Higo Addommati" valor=200000 previsao="N VAI ACONTECER"
+
+expect 20000 valorTotalDeApostas cenario=1
+expect 260000 valorTotalDeApostas cenario=2
+expect 2220000 valorTotalDeApostas cenario=3
+
+expect 2 totalDeApostas cenario=1
+expect 3 totalDeApostas cenario=2
+expect 3 totalDeApostas cenario=3
+
+
+# Testes com exception
+
+expectError "Erro no cadastro de aposta: Cenario invalido" cadastrarAposta cenario=0 apostador="Matheus Melanio" valor=10000 previsao="N VAI ACONTECER"
+expectError "Erro no cadastro de aposta: Cenario nao cadastrado" cadastrarAposta cenario=9 apostador="Matheus Melanio" valor=10000 previsao="N VAI ACONTECER"
+expectError "Erro no cadastro de aposta: Apostador nao pode ser vazio ou nulo" cadastrarAposta cenario=1 apostador="" valor=10000 previsao="N VAI ACONTECER"
+expectError "Erro no cadastro de aposta: Apostador nao pode ser vazio ou nulo" cadastrarAposta cenario=1 apostador="  " valor=10000 previsao="N VAI ACONTECER"
+expectError "Erro no cadastro de aposta: Valor nao pode ser menor ou igual a zero" cadastrarAposta cenario=1 apostador="Matheus Melanio" valor=0 previsao="N VAI ACONTECER"
+expectError "Erro no cadastro de aposta: Valor nao pode ser menor ou igual a zero" cadastrarAposta cenario=1 apostador="Matheus Melanio" valor=-3 previsao="N VAI ACONTECER"
+expectError "Erro no cadastro de aposta: Previsao invalida" cadastrarAposta cenario=1 apostador="Matheus Melanio" valor=10000 previsao="ACONTECER"
+expectError "Erro no cadastro de aposta: Previsao invalida" cadastrarAposta cenario=1 apostador="Matheus Melanio" valor=10000 previsao="N ACONTECER"
+expectError "Erro no cadastro de aposta: Previsao nao pode ser vazia ou nula" cadastrarAposta cenario=1 apostador="Matheus Melanio" valor=10000 previsao=""
+expectError "Erro no cadastro de aposta: Previsao nao pode ser vazia ou nula" cadastrarAposta cenario=1 apostador="Matheus Melanio" valor=10000 previsao="   "
+
+expectError "Erro na consulta do valor total de apostas: Cenario invalido" valorTotalDeApostas cenario=0
+expectError "Erro na consulta do valor total de apostas: Cenario invalido" valorTotalDeApostas cenario=-1
+expectError "Erro na consulta do valor total de apostas: Cenario nao cadastrado" valorTotalDeApostas cenario=9
+
+expectError "Erro na consulta do total de apostas: Cenario invalido" totalDeApostas cenario=0
+expectError "Erro na consulta do total de apostas: Cenario invalido" totalDeApostas cenario=-1
+expectError "Erro na consulta do total de apostas: Cenario nao cadastrado" totalDeApostas cenario=10
+
+
+###########################
+#     LAB04 - TESTE 4     #
+###########################
+
+fecharAposta cenario=1 ocorreu=false
+fecharAposta cenario=2 ocorreu=true
+
+expect 100 getCaixaCenario cenario=1
+expect 100 getCaixaCenario cenario=2
+
+expect 9900 getTotalRateioCenario cenario=1
+expect 9900 getTotalRateioCenario cenario=2
+
+expect 100200 getCaixa
+
+# Testes com exception
+
+
+expectError "Erro ao fechar aposta: Cenario invalido" fecharAposta cenario=0 ocorreu=false
+expectError "Erro ao fechar aposta: Cenario invalido" fecharAposta cenario=-1 ocorreu=false
+expectError "Erro ao fechar aposta: Cenario nao cadastrado" fecharAposta cenario=80 ocorreu=false
+expectError "Erro ao fechar aposta: Cenario ja esta fechado" fecharAposta cenario=1 ocorreu=false
+
+expectError "Erro na consulta do caixa do cenario: Cenario invalido" getCaixaCenario cenario=0
+expectError "Erro na consulta do caixa do cenario: Cenario invalido" getCaixaCenario cenario=-1
+expectError "Erro na consulta do caixa do cenario: Cenario nao cadastrado" getCaixaCenario cenario=99
+expectError "Erro na consulta do caixa do cenario: Cenario ainda esta aberto" getCaixaCenario cenario=3
+
+expectError "Erro na consulta do total de rateio do cenario: Cenario invalido" getTotalRateioCenario cenario=0
+expectError "Erro na consulta do total de rateio do cenario: Cenario invalido" getTotalRateioCenario cenario=-1
+expectError "Erro na consulta do total de rateio do cenario: Cenario nao cadastrado" getTotalRateioCenario cenario=80
+expectError "Erro na consulta do total de rateio do cenario: Cenario ainda esta aberto" getTotalRateioCenario cenario=3
